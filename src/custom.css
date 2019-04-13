@@ -1,0 +1,27 @@
+.btn-primary {
+    background-color: #8B61B0;
+    border: #8B61B0;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+#welcomeH1 {
+    color: #8B61B0;
+}
+
+.veryImpo {
+    color: #8B61B0;
+    font-weight: bold;
+}
+
+.impo {
+    color: #8B61B0;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.formLabel {
+    color: #8B61B0;
+    padding-bottom: 3px;
+    padding-top: 3px;
+}
