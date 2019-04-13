@@ -8,6 +8,10 @@ import ProjectDetails from "./components/ProjectDetails";
 import Welcome from "./components/Welcome";
 import AddProject from "./components/AddProject";
 import Help from "./components/Help";
+import VacantList from "./components/VacantList";
+//import signUp from "./components/SignUp";
+import NgoList from "./components/NgoList";
+import AddNgo from "./components/AddNgo";
 
 class App extends Component {
   render() {
@@ -20,6 +24,9 @@ class App extends Component {
           <Route exact path="/project/:id" component={ProjectDetails} />
           <Route exact path="/AddProject" component={AddProject} />
           <Route exact path="/Helpwtf" component={Help} />
+          <Route exact path="/vacantlist" component={VacantList} />
+          <Route exact path="/organizaciones" component={NgoList} />
+          <Route exact path="/organizaciones/add" component={AddNgo} />
         </Switch>
       </div>
     );

@@ -13,3 +13,79 @@
   
 
         <Link to="/projectList" style={{ textDecoration: "none" }}>
+
+
+
+<Route exact path="/auth/signup" component={signUp} />
+
+import React from "react"; 
+import axios from "axios";
+
+class signUp extends Component {
+    constructor(props){
+        super(props);
+    this.state = {
+        username: "",
+        password:"", 
+    }
+    handleFormSubmit = event => {
+        event.preventDefault();
+        const username = this.state.username;
+        const password = this.state.password;
+        axios
+          .post("http://localhost:5000/auth/signup", {
+            username,
+            password,
+          })
+          .then(() => {
+            this.props.getData();
+            this.setState({
+              username: "",
+              password: "",
+            });
+          })
+          .catch(error => console.log(error));
+      };
+
+      handleChange = event => {
+        const { username, value } = event.target; //** Revisar aquí que pedo con el NAME!*/
+        this.setState({ [username]: value });
+      };
+    
+      alertaExito() {
+        alert("usuario guardado exitosamente");
+      }
+
+      render ()
+      {
+        return(<div className="form-group">
+        <form onSubmit={this.handleFormSubmit}>
+          <label className="formLabel">Nombre de Usuario</label>
+          <input
+            type="text"
+            name="name"
+            value={this.state.name}
+            onChange={e => this.handleChange(e)}
+            className="form-control"
+          />
+          <label className="formLabel">Contraseña</label>
+          <input
+            type="password"
+            name="location"
+            value={this.state.password}
+            onChange={e => this.handleChange(e)}
+            className="form-control"
+          />
+          <input
+            type="submit"
+            value="Registrar"
+            className="btn-primary"
+            onClick={this.alertaExito}
+          />
+        </form>
+      </div>
+      );
+      }
+    }
+    }
+      export default signUp;

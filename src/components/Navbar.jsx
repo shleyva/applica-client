@@ -23,8 +23,8 @@ const navbar = () => {
         <a href="/AddProject" className="ml-1 impo">
           Añadir Proyecto
         </a>
-        <a href="/projectList" className="ml-1 impo">
-          Vacantes
+        <a href="/organizaciones" className="ml-1 impo">
+          Organizaciones
         </a>
       </div>
     </Navbar>

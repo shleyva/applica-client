@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { Card, Button, CardColumns } from "react-bootstrap";
-
-import AddProject from "./AddProject";
+import { Card, Button, Col } from "react-bootstrap";
 
 class ProjectList extends Component {
   constructor() {
@@ -26,11 +24,12 @@ class ProjectList extends Component {
   render() {
     return (
       <div>
-        <div>
+        <h1 className="veryImpo">Proyectos</h1>
+        <div class="row">
           {this.state.listOfProjects.map((project, index) => {
             return (
               <div key={project._id} className="d-flex justify-content-center">
-                <CardColumns>
+                <Col xs="12" sm="4">
                   <Card style={{ width: "20rem", float: "center" }}>
                     <Card.Img variant="top" src={project.pic} />
                     <Card.Body>
@@ -43,7 +42,7 @@ class ProjectList extends Component {
                       </Link>
                     </Card.Body>
                   </Card>
-                </CardColumns>
+                </Col>
               </div>
             );
           })}

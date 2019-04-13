@@ -1,68 +1,65 @@
 import React, { Component } from "react";
 import axios from "axios";
 
-class AddProject extends Component {
+class AddNgo extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: "",
+      ngoName: "",
       description: "",
       location: "",
-      start: "",
-      end: "",
-      pic: ""
+      since: "",
+      activities: ""
     };
   }
 
   handleFormSubmit = event => {
     event.preventDefault();
-    const name = this.state.name;
+    const ngoName = this.state.ngoName;
     const description = this.state.description;
     const location = this.state.location;
-    const start = this.state.start;
-    const end = this.state.end;
-    const pic = this.state.pic;
+    const since = this.state.since;
+    const activities = this.state.activities;
+
     axios
-      .post("https://applica.mybluemix.net/project/add", {
-        name,
+      .post("https://applica.mybluemix.net/organizaciones/add", {
+        ngoName,
         description,
         location,
-        start,
-        end,
-        pic
+        since,
+        activities
       })
       .then(() => {
         this.props.getData();
         this.setState({
-          name: "",
+          ngoName: "",
           description: "",
           location: "",
-          start: "",
-          end: "",
-          pic: ""
+          since: "",
+          activies: ""
         });
       })
       .catch(error => console.log(error));
   };
 
   handleChange = event => {
-    const { name, value } = event.target; //** Revisar aquí que pedo con el NAME!*/
-    this.setState({ [name]: value });
+    const { ngoName, value } = event.target; //** Revisar aquí que pedo con el NAME!*/
+    this.setState({ [ngoName]: value });
   };
 
   alertaExito() {
-    alert("Proyecto guardado exitosamente! Regresamos al listado de proyectos");
+    alert("Organización registrada con éxito");
   }
 
   render() {
     return (
       <div className="form-group">
         <form onSubmit={this.handleFormSubmit}>
-          <label className="formLabel">Nombre del Proyecto</label>
+          <label className="formLabel">Nombre de la Organización</label>
           <input
             type="text"
             name="name"
-            value={this.state.name}
+            value={this.state.ngoName}
             onChange={e => this.handleChange(e)}
             className="form-control"
           />
@@ -81,27 +78,18 @@ class AddProject extends Component {
             onChange={e => this.handleChange(e)}
             className="form-control"
           />
-          <label className="formLabel">Fecha de Inicio</label>
-          <input
-            type="date"
-            name="start"
-            value={this.state.start}
+          <label className="formLabel">Actividades Principales:</label>
+          <textarea
+            name="activities"
+            value={this.state.activities}
             onChange={e => this.handleChange(e)}
             className="form-control"
           />
-          <label className="formLabel">Fecha de Cierre</label>
+          <label className="formLabel">Año de fundación</label>
           <input
-            type="date"
-            name="end"
-            value={this.state.end}
-            onChange={e => this.handleChange(e)}
-            className="form-control"
-          />
-          <label className="formLabel">URL de Fotografía</label>
-          <input
-            type="URL"
-            name="pic"
-            value={this.state.pic}
+            type="number"
+            name="since"
+            value={this.state.since}
             onChange={e => this.handleChange(e)}
             className="form-control"
           />
@@ -118,4 +106,4 @@ class AddProject extends Component {
   }
 }
 
-export default AddProject;
+export default AddNgo;

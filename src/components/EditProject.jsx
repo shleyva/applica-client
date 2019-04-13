@@ -17,10 +17,13 @@ class EditProject extends Component {
     event.preventDefault();
 
     axios
-      .put(`http://localhost:5000/projects/${this.props.theProject._id}`, {
-        name,
-        description
-      })
+      .put(
+        `https://applica.mybluemix.net/projects/${this.props.theProject._id}`,
+        {
+          name,
+          description
+        }
+      )
       .then(() => {
         this.props.getTheProject();
         // after submitting the form, redirect to '/projects'

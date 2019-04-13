@@ -14,12 +14,13 @@ class ProjectDetails extends Component {
   }
 
   getSingleProject = () => {
+    console.log("get single project triggered");
     const { params } = this.props.match;
     axios
-      .get(`http://localhost:5000/projects/${params.id}`)
+      .get(`https://applica.mybluemix.net/projects/${params.id}`)
       .then(responseFromApi => {
         const theProject = responseFromApi.data;
-        this.setState(theProject);
+        this.setState({ data: theProject });
       })
       .catch(err => {
         console.log(err);
@@ -47,7 +48,7 @@ class ProjectDetails extends Component {
   deleteProject = id => {
     const { params } = this.props.match;
     axios
-      .delete(`http://localhost:5000/projects/${params.id}`)
+      .delete(`https://applica.mybluemix.net/projects/${params.id}`)
       .then(responseFromApi => {
         this.props.history.push("/projects"); // !!!
       })
